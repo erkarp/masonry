@@ -3,3 +3,6 @@
 env/*
 django/*
 .vscode/*
+
+site/xkcd/media/*
+site/xkcd/templates/*
