@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
+  <div id="app" v-masonry
+    item-selector=".comic"
+    transition-duration="0.3s">
     <Comic
       v-for="comic in comics"
       v-bind:key="comic.xkcd"
       v-bind:xkcd="comic"
+      v-masonry-tile class="comic"
     ></Comic>
   </div>
 </template>
 
 <script>
+import {VueMasonryPlugin} from 'vue-masonry'
 import axios from 'axios'
+import Vue from 'vue'
 import Comic from './Comic'
+
+Vue.use(VueMasonryPlugin)
 
 export default {
   name: 'App',
@@ -29,12 +36,21 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: cornflowerblue;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+}
+.comic {
+  max-width: 22%;
+  margin: 10px;
+}
+img {
+  max-width: 100%;
 }
 </style>

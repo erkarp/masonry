@@ -1,5 +1,11 @@
 <template>
-  <img :src="comic_one" :alt="this.xkcd.name">
+  <figure>
+    <img :src="comic_one" :alt="this.xkcd.name">
+    <figcaption>
+      {{this.xkcd.name}}
+      (<date>{{this.xkcd.date}}</date>)
+    </figcaption>
+  </figure>
 </template>
 
 <script>
