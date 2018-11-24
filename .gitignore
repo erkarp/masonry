@@ -1,8 +1,8 @@
 *.pyc
 
 env/*
-django/*
+django
 .vscode/*
 
-site/xkcd/media/*
+site/xkcd/static/*
 site/xkcd/templates/*
