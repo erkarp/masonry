@@ -1,9 +1,10 @@
 <template>
   <figure>
-    <img :src="comic_one" :alt="this.xkcd.name">
+    <img :src="permalink" :alt="this.xkcd.name">
     <figcaption>
       {{this.xkcd.name}}
       (<date>{{this.xkcd.date}}</date>)
+      <sub>{{this.xkcd.xkcd}}</sub>
     </figcaption>
   </figure>
 </template>
@@ -13,7 +14,7 @@ export default {
   name: 'Comic',
   props: ['xkcd'],
   computed: {
-    comic_one: function () {
+    permalink: function () {
       return `https://imgs.xkcd.com/comics/${this.xkcd.link}.png`
     }
   }
