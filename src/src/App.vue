@@ -33,28 +33,33 @@ export default {
     }
   },
   methods: {
-    scroll () {
-      let _this = this
+    initScrollListener () {
+      const _this = this
 
       window.onscroll = () => {
-        let d = document.documentElement
-
+        const d = document.documentElement
         if (d.scrollHeight - d.scrollTop === d.clientHeight) {
-          axios.get(`http://127.0.0.1:8000/xkcds/?page=${++_this.page}`)
-            .then(response => {
-              if (response.data.comics) {
-                _this.comics = _this.comics.concat(response.data.comics)
-                _this.page = response.data.page
-              } else {
-                _this.moreToLoad = false
-              }
-            })
+          _this.fetchComics()
         }
       }
+    },
+    fetchComics () {
+      const _this = this
+
+      axios.get(`http://127.0.0.1:8000/xkcds/?page=${++_this.page}`)
+        .then(response => {
+          if (response.data.comics) {
+            _this.comics = _this.comics.concat(response.data.comics)
+            _this.page = response.data.page
+          } else {
+            _this.moreToLoad = false
+          }
+        })
     }
   },
   mounted () {
-    this.scroll()
+    this.fetchComics()
+    this.initScrollListener()
   }
 }
 </script>
