@@ -101,6 +101,8 @@ img {
   max-width: 100%;
 }
 sub {
-  margin: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: .6em;
 }
 </style>

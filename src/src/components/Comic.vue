@@ -1,11 +1,17 @@
 <template>
   <figure>
-    <img :src="permalink" :alt="this.xkcd.name">
+
     <figcaption>
       {{this.xkcd.name}}
-      (<time :datetime="this.xkcd.date">{{this.xkcd.date}}</time>)
-      <sub>{{this.xkcd.xkcd}}</sub>
     </figcaption>
+
+    <img :src="permalink" :alt="this.xkcd.name">
+
+    <sub>
+      {{this.xkcd.xkcd}}
+      <time :datetime="this.xkcd.date">{{this.xkcd.date}}</time>
+    </sub>
+
   </figure>
 </template>
 

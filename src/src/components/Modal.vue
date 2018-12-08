@@ -69,8 +69,12 @@ export default {
 }
 
 .modal-container img {
-  max-height: 80vh;
+  max-height: 75vh;
   max-width: 80vw;
+}
+
+.modal-container sub {
+  font-size: .9em;
 }
 
 /*
