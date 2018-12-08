@@ -6,9 +6,17 @@
         v-for="comic in comics"
         v-bind:key="comic.xkcd"
         v-bind:xkcd="comic"
+        v-on:click.native="openModal(comic)"
         v-masonry-tile class="comic"
       ></Comic>
     </main>
+
+    <Modal
+      v-if="comicModal"
+      v-bind:xkcd="comicModal"
+      @close="closeModal"
+    ></Modal>
+
     <sub v-if="moreToLoad">Loading…</sub>
     <sub v-else>You have finished xkcd.</sub>
   </div>
@@ -18,18 +26,20 @@
 import {VueMasonryPlugin} from 'vue-masonry'
 import axios from 'axios'
 import Vue from 'vue'
-import Comic from './Comic'
+import Comic from './components/Comic'
+import Modal from './components/Modal'
 
 Vue.use(VueMasonryPlugin)
 
 export default {
   name: 'App',
-  components: { Comic },
+  components: { Comic, Modal },
   data () {
     return {
       comics: [],
       page: 0,
-      moreToLoad: true
+      moreToLoad: true,
+      comicModal: null
     }
   },
   methods: {
@@ -55,6 +65,12 @@ export default {
             _this.moreToLoad = false
           }
         })
+    },
+    openModal (comic) {
+      this.comicModal = comic
+    },
+    closeModal () {
+      this.comicModal = null
     }
   },
   mounted () {
