@@ -5,12 +5,14 @@
         <div class="modal-container">
 
           <div class="modal-header">
+            <button @click="$emit('prev')">prev</button>
+            <button @click="$emit('next')">next</button>
             <button class="modal-default-button" @click="$emit('close')">
-              OK
+              close
             </button>
           </div>
 
-          <Comic v-bind:xkcd="comic"></Comic>
+          <Comic v-bind:xkcd="this.xkcd"></Comic>
 
         </div>
       </div>
@@ -24,12 +26,7 @@ import Comic from './Comic'
 export default {
   name: 'Modal',
   props: ['xkcd'],
-  components: { Comic },
-  data () {
-    return {
-      comic: this.xkcd
-    }
-  }
+  components: { Comic }
 }
 </script>
 
@@ -61,6 +58,7 @@ export default {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
+  text-align: left;
   font-family: Helvetica, Arial, sans-serif;
 }
 

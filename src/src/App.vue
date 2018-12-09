@@ -12,8 +12,10 @@
     </main>
 
     <Modal
-      v-if="comicModal"
-      v-bind:xkcd="comicModal"
+      v-if="modalComic"
+      v-bind:xkcd="modalComic"
+      @prev="shiftModal(1)"
+      @next="shiftModal(-1)"
       @close="closeModal"
     ></Modal>
 
@@ -39,7 +41,7 @@ export default {
       comics: [],
       page: 0,
       moreToLoad: true,
-      comicModal: null
+      modalComic: null
     }
   },
   methods: {
@@ -67,10 +69,14 @@ export default {
         })
     },
     openModal (comic) {
-      this.comicModal = comic
+      this.modalComic = comic
+    },
+    shiftModal (shift) {
+      let currIndex = this.comics.indexOf(this.modalComic)
+      this.modalComic = this.comics[currIndex + shift]
     },
     closeModal () {
-      this.comicModal = null
+      this.modalComic = null
     }
   },
   mounted () {
@@ -104,5 +110,8 @@ sub {
   display: flex;
   justify-content: space-between;
   font-size: .6em;
+}
+figcaption {
+  text-align: center;
 }
 </style>
