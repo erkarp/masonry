@@ -4,7 +4,7 @@
       transition-duration="0.3s">
       <Comic
         v-for="comic in comics"
-        v-bind:key="comic.xkcd"
+        v-bind:key="comic.xkcd" :ref="comic.xkcd"
         v-bind:xkcd="comic"
         v-on:click.native="openModal(comic)"
         v-masonry-tile class="comic"
@@ -72,8 +72,11 @@ export default {
       this.modalComic = comic
     },
     shiftModal (shift) {
-      let currIndex = this.comics.indexOf(this.modalComic)
+      const currIndex = this.comics.indexOf(this.modalComic)
       this.modalComic = this.comics[currIndex + shift]
+
+      const comicElem = this.$refs[this.modalComic.xkcd][0].$el
+      comicElem.scrollIntoView()
     },
     closeModal () {
       this.modalComic = null
