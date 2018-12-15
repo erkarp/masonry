@@ -80,8 +80,19 @@ export default {
     }
   },
   mounted () {
-    this.fetchComics()
-    this.initScrollListener()
+    const _this = this
+    _this.fetchComics()
+    _this.initScrollListener()
+
+    window.addEventListener('keyup', function (e) {
+      if (_this.modalComic) {
+        switch (e.keyCode) {
+          case 37: _this.shiftModal(-1)
+            break
+          case 39: _this.shiftModal(1)
+        }
+      }
+    })
   }
 }
 </script>
