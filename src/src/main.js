@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
+window.imagePath = 'https://comic.sfo2.digitaloceanspaces.com/xkcd/'
 
 /* eslint-disable no-new */
 new Vue({

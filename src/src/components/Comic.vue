@@ -1,10 +1,7 @@
 <template>
   <figure>
 
-    <figcaption>
-      {{this.xkcd.name}}
-    </figcaption>
-
+    <figcaption>{{this.xkcd.name}}</figcaption>
     <img :src="permalink" :alt="this.xkcd.name">
 
     <sub>
@@ -21,7 +18,7 @@ export default {
   props: ['xkcd'],
   computed: {
     permalink: function () {
-      return `https://imgs.xkcd.com/comics/${this.xkcd.file}`
+      return `${window.imagePath}${this.xkcd.file}`
     }
   }
 }
