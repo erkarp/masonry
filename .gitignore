@@ -6,3 +6,4 @@ django
 
 site/xkcd/static/*
 site/xkcd/templates/*
+xkcd_imgs/*
