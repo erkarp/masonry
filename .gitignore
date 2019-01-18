@@ -1,9 +1,5 @@
 *.pyc
 
-env/*
 django
-.vscode/*
 
 site/xkcd/static/*
-site/xkcd/templates/*
-xkcd_imgs/*
